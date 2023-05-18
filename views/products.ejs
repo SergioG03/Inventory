@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/main.css">
+  <title>Lista de productos</title>
+</head>
+<body>
+  <div class="menu-bar">
+    <div>
+      <p>Bienvenido <%= username %></p>
+      <a href="/product/create" class="menu-link">Crear nuevo producto</a>
+      <a href="/myproducts" class="menu-link">Mis productos</a>
+      <a href="/download" class="menu-link">Descargar informe</a>
+    </div>
+    <a href="/logout" class="logout-btn">Cerrar sesión</a>
+  </div>
+  
+  <div class="container">
+    <h1>Lista de productos</h1>
+    <div class="search-bar">
+      <form action="/products" method="GET">
+        <input type="text" name="search" placeholder="Buscar productos">
+        <button type="submit">Buscar</button>
+      </form>
+      <form action="/products" method="GET">
+        <button type="submit" name="showAll">Mostrar todos</button>
+      </form>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Dueño</th>
+          <th>Precio</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% products.forEach(function(product) { %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td><%= product.owner.username %></td>
+            <td><%= product.price %>$</td>
+            <td><a href="/product/<%= product.id %>">Ver detalle</a></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

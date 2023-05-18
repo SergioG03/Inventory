@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Detalles del Producto</title>
+  <link rel="stylesheet" type="text/css" href="/details.css">
+</head>
+<body>
+  <div class="container">
+    <div class="product-info">
+      <h2><%= product.name %></h2>
+      <p>Descripción: <%= product.description %></p>
+      <p>Precio: <%= product.price %></p>
+      <% if (isOwner) { %>
+        <div class="product-actions">
+          <a href="/product/<%= product.id %>/update" class="edit-btn">Editar producto</a>
+          <a href="/product/<%= product.id %>/delete" class="delete-btn">Eliminar producto</a>
+        </div>
+      <% } %>      
+      <a href="/products" class="back-btn">Volver a la página principal</a>
+    </div>    
+</body>
+</html>

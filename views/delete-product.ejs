@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/delete-product.css">
+  <title>Delete Product</title>
+  <script>
+    function confirmDelete() {
+      var confirmation = confirm('Si esta seguro pulse en aceptar, de lo contrario pulse en cancelar');
+      if (confirmation) {
+        document.getElementById('delete-form').submit();
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Eliminar producto</h1>
+  <p>Estas seguro de que quieres eliminar el producto?</p>
+  <p>Name: <%= product.name %></p>
+  <p>Description: <%= product.description %></p>
+  <p>Price: <%= product.price %></p>
+  <form id="delete-form" action="/product/<%= product.id %>/delete" method="post">
+    <input type="button" value="Delete" onclick="confirmDelete()">
+  </form>
+</body>
+</html>

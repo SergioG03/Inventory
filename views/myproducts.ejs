@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/myproducts.css">
+  <title>Mis productos</title>
+</head>
+<body>
+  <h1>Mis productos</h1>
+  <% if (myProducts.length === 0) { %>
+    <p>No tienes productos registrados.</p>
+  <% } else { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Acciones</th> <!-- Columna para los botones de acción -->
+        </tr>
+      </thead>
+      <tbody>
+        <% myProducts.forEach((product) => { %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td>$<%= product.price %></td>
+            <td>
+              <a href="/product/<%= product.id %>/edit">Editar</a>
+              <a href="/product/<%= product.id %>/delete">Eliminar</a>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } %>
+  <a href="/products">Volver al menú principal</a>
+</body>
+</html>
